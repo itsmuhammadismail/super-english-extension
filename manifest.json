@@ -1,0 +1,42 @@
+{
+  "name": "SupaEnglish",
+  "version": "0.1.0",
+  "description": "Translate your text into any language",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "css": ["contentScript.css"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/active.svg",
+        "assets/inactive.svg",
+        "assets/loader.svg",
+        "assets/casual.svg",
+        "assets/eng.svg",
+        "assets/formal.svg",
+        "assets/rewrite.svg",
+        "assets/urdu.svg"
+      ],
+      "matches": ["https://*/*"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/active.svg",
+      "24": "assets/active.svg",
+      "32": "assets/active.svg"
+    },
+    "default_title": "My YT Bookmarks",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
+}

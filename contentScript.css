@@ -1,0 +1,44 @@
+.circle {
+  animation: circle 1s linear infinite;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.superlist {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.superlist img {
+  width: 24px;
+  cursor: pointer;
+}
+
+.superlist .list {
+  /* margin: 1rem; */
+  padding: 0.5rem;
+  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.75);
+  display: flex;
+  gap: 0.7rem;
+  background-color: white;
+}
+
+.super_img {
+  width: 36px !important;
+}
+
+.other_img {
+  display: none;
+}
+
+.superlist:hover .other_img {
+  display: block;
+}
