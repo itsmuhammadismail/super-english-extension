@@ -13,8 +13,8 @@
 
 .superlist {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
 }
 
 .superlist img {
@@ -24,19 +24,34 @@
 
 .superlist .list {
   /* margin: 1rem; */
-  padding: 0.5rem;
-  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.75);
+  padding: 0.5rem 0.75rem 0.5rem 1rem;
   display: flex;
   gap: 0.7rem;
   background-color: white;
+  border-radius: 2rem;
+  transition: all 0.25s ease;
+}
+
+.superlist .list:hover {
+  box-shadow: -2px 1px 14px 5px rgba(77, 75, 75, 0.1);
 }
 
 .super_img {
-  width: 36px !important;
+  width: 30px !important;
 }
 
 .other_img {
   display: none;
+  opacity: 0.7;
+}
+
+#super_eng_btn,
+#super_urdu_btn {
+  width: 16px;
+}
+
+#super_formal_btn {
+  width: 18px;
 }
 
 .superlist:hover .other_img {

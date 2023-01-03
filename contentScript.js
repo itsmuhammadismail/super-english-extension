@@ -70,7 +70,7 @@
   };
 
   const addGmailButton = async () => {
-    const input = document.querySelector("#\\:t0");
+    const input = document.querySelector(".Am");
     input.parentElement.style.position = "relative";
 
     const superList = input.parentElement.querySelectorAll(".superlist");
@@ -86,11 +86,6 @@
 
     createElement.innerHTML = `
       <div class="list">
-        <img class="other_img" src="${chrome.runtime.getURL(
-          "assets/rewrite.svg"
-        )}"
-        
-        />
         <img id="super_eng_btn" class="other_img" src="${chrome.runtime.getURL(
           "assets/eng.svg"
         )}"
@@ -143,7 +138,7 @@
     if (type === "NEW") {
       // addButton();
       try {
-        document.querySelector("#\\:t0");
+        document.querySelector(".Am");
         addGmailButton();
       } catch (e) {
         console.log("Not chrome");
