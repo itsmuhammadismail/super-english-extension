@@ -15,7 +15,7 @@
       },
     };
 
-    let btn = document.querySelector(".super_img");
+    let btn = input.parentElement.querySelector(".super_img");
     btn.src = chrome.runtime.getURL("assets/loader.svg");
     btn.classList.add("circle");
 
@@ -69,7 +69,7 @@
       : (input.innerText = res.text.replace("\n\n", ""));
   };
 
-  const addGmailButton = async () => {
+  const addGmailButton = () => {
     const inputs = document.querySelectorAll(".Am");
     for (let i = 0; i < inputs.length; i++) {
       let input = inputs[i];
@@ -109,27 +109,29 @@
 
       input.parentElement.appendChild(createElement);
 
-      document
+      input.parentElement
         .querySelector("#super_eng_btn")
         .addEventListener("click", () =>
           translate({ input: input, language: "english", isTextField: false })
         );
 
-      document.querySelector("#super_urdu_btn").addEventListener("click", () =>
-        translate({
-          input: input,
-          language: "roman urdu",
-          isTextField: false,
-        })
-      );
+      input.parentElement
+        .querySelector("#super_urdu_btn")
+        .addEventListener("click", () =>
+          translate({
+            input: input,
+            language: "roman urdu",
+            isTextField: false,
+          })
+        );
 
-      document
+      input.parentElement
         .querySelector("#super_formal_btn")
         .addEventListener("click", () =>
           changeTone({ input: input, tone: "professional", isTextField: false })
         );
 
-      document
+      input.parentElement
         .querySelector("#super_casual_btn")
         .addEventListener("click", () =>
           changeTone({ input: input, tone: "casual", isTextField: false })
@@ -143,21 +145,27 @@
     if (type === "NEW") {
       // addButton();
       try {
-        document.querySelector(".Am");
         addGmailButton();
 
-        document
-          .querySelector(".T-I")
-          .addEventListener("click", () => addGmailButton());
-        document.querySelector(".zA").addEventListener("click", () => {
-          setTimeout(() => {
-            document
-              .querySelector(".ams")
-              .addEventListener("click", () =>
-                setTimeout(() => addGmailButton(), 1000)
-              );
-          }, 1000);
+        document.querySelector(".T-I").addEventListener("click", () => {
+          console.log("Added  ");
+          setTimeout(() => addGmailButton(), 1000);
         });
+
+        const mails = document.querySelectorAll(".zA");
+
+        for (let i = 0; i < mails.length; i++) {
+          let mail = mails[i];
+          mail.addEventListener("click", () => {
+            setTimeout(() => {
+              document
+                .querySelector(".ams")
+                .addEventListener("click", () =>
+                  setTimeout(() => addGmailButton(), 1000)
+                );
+            }, 1000);
+          });
+        }
         // document
         //   .querySelector(".ams")
         //   .addEventListener("click", () => addGmailButton());

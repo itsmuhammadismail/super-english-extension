@@ -1,5 +1,5 @@
 {
-  "name": "SupaEnglish",
+  "name": "Super English",
   "version": "0.1.0",
   "description": "Translate your text into any language",
   "permissions": ["storage", "tabs"],
@@ -35,7 +35,7 @@
       "24": "assets/active.svg",
       "32": "assets/active.svg"
     },
-    "default_title": "My YT Bookmarks",
+    "default_title": "Super English",
     "default_popup": "popup.html"
   },
   "manifest_version": 3
