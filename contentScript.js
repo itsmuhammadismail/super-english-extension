@@ -1,11 +1,19 @@
 (() => {
   const translate = async ({ input, language, isTextField }) => {
+    let textField = input;
+
+    const signature = input.querySelector(".gmail_signature");
+    if (signature != undefined) {
+      console.log(signature);
+      textField.removeChild(signature);
+    }
+
     var raw = JSON.stringify({
       language: language,
-      text: isTextField ? input.value : input.innerText,
+      text: isTextField ? textField.value : textField.innerText,
     });
 
-    console.log(input.value);
+    console.log(input.innerHTML);
 
     var requestOptions = {
       method: "POST",
@@ -29,15 +37,25 @@
 
     console.log(res);
 
-    isTextField
-      ? (input.value = res.text.replace("\n\n", ""))
-      : (input.innerText = res.text.replace("\n\n", ""));
+    // isTextField
+    //   ? (input.value = res.text.replace("\n\n", ""))
+    //   : (input.innerText = res.text.replace("\n\n", ""));
+    input.innerHTML = res.text.replace("\n\n", "") + "\n\n";
+    if (signature != undefined) input.appendChild(signature);
   };
 
   const changeTone = async ({ input, tone, isTextField }) => {
+    let textField = input;
+
+    const signature = input.querySelector(".gmail_signature");
+    if (signature != undefined) {
+      console.log(signature);
+      textField.removeChild(signature);
+    }
+
     var raw = JSON.stringify({
       tone: tone,
-      text: isTextField ? input.value : input.innerText,
+      text: isTextField ? textField.value : textField.innerText,
     });
 
     console.log(input.value);
@@ -67,6 +85,8 @@
     isTextField
       ? (input.value = res.text.replace("\n\n", ""))
       : (input.innerText = res.text.replace("\n\n", ""));
+
+    if (signature != undefined) input.appendChild(signature);
   };
 
   const addGmailButton = () => {
