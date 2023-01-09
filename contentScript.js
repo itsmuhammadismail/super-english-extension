@@ -73,20 +73,17 @@
     const inputs = document.querySelectorAll(".Am");
     for (let i = 0; i < inputs.length; i++) {
       let input = inputs[i];
-      input.parentElement.style.position = "relative";
       const superList = input.parentElement.querySelectorAll(".superlist");
 
-      if ([...superList].length > 0) {
-        for (let i = 0; i < [...superList].length; i++) {
-          input.parentElement.removeChild(superList[i]);
-        }
-      }
-      input.parentNode.style.position = "relative";
+      if ([...superList].length == 0) {
+        input.parentElement.style.position = "relative";
+        // for (let i = 0; i < [...superList].length; i++) {
+        //   input.parentElement.removeChild(superList[i]);
+        // }
+        const createElement = document.createElement("div");
+        createElement.classList.add("superlist");
 
-      const createElement = document.createElement("div");
-      createElement.classList.add("superlist");
-
-      createElement.innerHTML = `
+        createElement.innerHTML = `
         <div class="list">
           <img id="super_eng_btn" class="other_img" src="${chrome.runtime.getURL(
             "assets/eng.svg"
@@ -107,71 +104,81 @@
         </div>
       `;
 
-      input.parentElement.appendChild(createElement);
+        input.parentElement.appendChild(createElement);
 
-      input.parentElement
-        .querySelector("#super_eng_btn")
-        .addEventListener("click", () =>
-          translate({ input: input, language: "english", isTextField: false })
-        );
+        input.parentElement
+          .querySelector("#super_eng_btn")
+          .addEventListener("click", () =>
+            translate({ input: input, language: "english", isTextField: false })
+          );
 
-      input.parentElement
-        .querySelector("#super_urdu_btn")
-        .addEventListener("click", () =>
-          translate({
-            input: input,
-            language: "roman urdu",
-            isTextField: false,
-          })
-        );
+        input.parentElement
+          .querySelector("#super_urdu_btn")
+          .addEventListener("click", () =>
+            translate({
+              input: input,
+              language: "roman urdu",
+              isTextField: false,
+            })
+          );
 
-      input.parentElement
-        .querySelector("#super_formal_btn")
-        .addEventListener("click", () =>
-          changeTone({ input: input, tone: "professional", isTextField: false })
-        );
+        input.parentElement
+          .querySelector("#super_formal_btn")
+          .addEventListener("click", () =>
+            changeTone({
+              input: input,
+              tone: "professional",
+              isTextField: false,
+            })
+          );
 
-      input.parentElement
-        .querySelector("#super_casual_btn")
-        .addEventListener("click", () =>
-          changeTone({ input: input, tone: "casual", isTextField: false })
-        );
+        input.parentElement
+          .querySelector("#super_casual_btn")
+          .addEventListener("click", () =>
+            changeTone({ input: input, tone: "casual", isTextField: false })
+          );
+      }
     }
   };
 
-  chrome.runtime.onMessage.addListener((obj, sender, response) => {
-    const { type } = obj;
+  // chrome.runtime.onMessage.addListener((obj, sender, response) => {
+  //   const { type } = obj;
 
-    if (type === "NEW") {
-      // addButton();
-      try {
-        addGmailButton();
+  //   if (type === "NEW") {
+  //     // addButton();
+  //     try {
+  //       addGmailButton();
 
-        document.querySelector(".T-I").addEventListener("click", () => {
-          console.log("Added  ");
-          setTimeout(() => addGmailButton(), 1000);
-        });
+  //       document.querySelector(".T-I").addEventListener("click", () => {
+  //         console.log("Added  ");
+  //         setTimeout(() => addGmailButton(), 1000);
+  //       });
 
-        const mails = document.querySelectorAll(".zA");
+  //       const mails = document.querySelectorAll(".zA");
 
-        for (let i = 0; i < mails.length; i++) {
-          let mail = mails[i];
-          mail.addEventListener("click", () => {
-            setTimeout(() => {
-              document
-                .querySelector(".ams")
-                .addEventListener("click", () =>
-                  setTimeout(() => addGmailButton(), 1000)
-                );
-            }, 1000);
-          });
-        }
-        // document
-        //   .querySelector(".ams")
-        //   .addEventListener("click", () => addGmailButton());
-      } catch (e) {
-        console.log("Not chrome");
-      }
-    }
-  });
+  //       for (let i = 0; i < mails.length; i++) {
+  //         let mail = mails[i];
+  //         mail.addEventListener("click", () => {
+  //           setTimeout(() => {
+  //             document
+  //               .querySelector(".ams")
+  //               .addEventListener("click", () =>
+  //                 setTimeout(() => addGmailButton(), 1000)
+  //               );
+  //           }, 1000);
+  //         });
+  //       }
+  //       // document
+  //       //   .querySelector(".ams")
+  //       //   .addEventListener("click", () => addGmailButton());
+  //     } catch (e) {
+  //       console.log("Not chrome");
+  //     }
+  //   }
+  // });
+
+  setInterval(() => {
+    console.log("hello");
+    addGmailButton();
+  }, 1000);
 })();
