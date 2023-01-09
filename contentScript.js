@@ -2,10 +2,18 @@
   const translate = async ({ input, language, isTextField }) => {
     let textField = input;
 
-    const signature = input.querySelector(".gmail_signature");
-    if (signature != undefined) {
-      console.log(signature);
-      textField.removeChild(signature);
+    let lastChild = input.lastElementChild;
+    let signature = lastChild.querySelector(".gmail_signature");
+
+    if (signature == undefined) {
+      signature = input.querySelector(".gmail_signature");
+      if (signature != undefined) {
+        console.log(signature);
+
+        textField.removeChild(signature);
+      }
+    } else {
+      lastChild.removeChild(signature);
     }
 
     var raw = JSON.stringify({
@@ -41,17 +49,30 @@
     //   ? (input.value = res.text.replace("\n\n", ""))
     //   : (input.innerText = res.text.replace("\n\n", ""));
     input.innerHTML = res.text.replace("\n\n", "") + "\n\n";
-    if (signature != undefined) input.appendChild(signature);
+
+    if (signature != undefined) {
+      input.innerHTML += "<br/><br/><br/>";
+      input.appendChild(signature);
+    }
   };
 
   const changeTone = async ({ input, tone, isTextField }) => {
     let textField = input;
 
-    const signature = input.querySelector(".gmail_signature");
-    if (signature != undefined) {
-      console.log(signature);
-      textField.removeChild(signature);
+    let lastChild = input.lastElementChild;
+    let signature = lastChild.querySelector(".gmail_signature");
+
+    if (signature == undefined) {
+      signature = input.querySelector(".gmail_signature");
+      if (signature != undefined) {
+        console.log(signature);
+
+        textField.removeChild(signature);
+      }
+    } else {
+      lastChild.removeChild(signature);
     }
+    console.log(signature);
 
     var raw = JSON.stringify({
       tone: tone,
@@ -86,7 +107,10 @@
       ? (input.value = res.text.replace("\n\n", ""))
       : (input.innerText = res.text.replace("\n\n", ""));
 
-    if (signature != undefined) input.appendChild(signature);
+    if (signature != undefined) {
+      input.innerHTML += "<br/><br/><br/>";
+      input.appendChild(signature);
+    }
   };
 
   const addGmailButton = () => {
@@ -198,7 +222,6 @@
   // });
 
   setInterval(() => {
-    console.log("hello");
     addGmailButton();
   }, 1000);
 })();
