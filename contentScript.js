@@ -3,7 +3,11 @@
     let textField = input;
 
     let lastChild = input.lastElementChild;
-    let signature = lastChild.querySelector(".gmail_signature");
+    let signature = undefined;
+
+    try {
+      signature = lastChild.querySelector(".gmail_signature");
+    } catch (e) {}
 
     if (signature == undefined) {
       signature = input.querySelector(".gmail_signature");
@@ -60,7 +64,11 @@
     let textField = input;
 
     let lastChild = input.lastElementChild;
-    let signature = lastChild.querySelector(".gmail_signature");
+    let signature = undefined;
+
+    try {
+      signature = lastChild.querySelector(".gmail_signature");
+    } catch (e) {}
 
     if (signature == undefined) {
       signature = input.querySelector(".gmail_signature");
