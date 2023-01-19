@@ -17,12 +17,20 @@
   right: 10px;
 }
 
-.superlist img {
+.superlist-whatsapp {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.superlist img,
+.superlist-whatsapp img {
   width: 24px;
   cursor: pointer;
 }
 
-.superlist .list {
+.superlist .list,
+.superlist-whatsapp .list {
   /* margin: 1rem; */
   padding: 0.5rem 0.75rem 0.5rem 1rem;
   display: flex;
@@ -32,7 +40,8 @@
   transition: all 0.25s ease;
 }
 
-.superlist .list:hover {
+.superlist .list:hover,
+.superlist-whatsapp .list:hover {
   box-shadow: -2px 1px 14px 5px rgba(77, 75, 75, 0.1);
 }
 
@@ -54,6 +63,7 @@
   width: 18px;
 }
 
-.superlist:hover .other_img {
+.superlist:hover .other_img,
+.superlist-whatsapp:hover .other_img {
   display: block;
 }
