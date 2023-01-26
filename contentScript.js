@@ -194,8 +194,8 @@
     }
     console.log(signature);
 
-    const bk = document.querySelector(".Bk");
-    const email = bk.querySelector(".ii").innerText;
+    const bk = document.querySelectorAll(".h7");
+    const email = bk[bk.length - 1].querySelector(".ii").innerText;
 
     var raw = JSON.stringify({
       text: email,
