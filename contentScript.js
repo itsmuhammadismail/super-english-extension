@@ -187,7 +187,7 @@
       if (signature != null) {
         console.log(signature);
 
-        textField.removeChild(signature);
+        // textField.removeChild(signature);
       }
     } else {
       lastChild.removeChild(signature);
