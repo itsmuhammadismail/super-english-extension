@@ -24,7 +24,8 @@
         "assets/eng.svg",
         "assets/formal.svg",
         "assets/rewrite.svg",
-        "assets/urdu.svg"
+        "assets/urdu.svg",
+        "functions/translate.js"
       ],
       "matches": ["https://*/*"]
     }
